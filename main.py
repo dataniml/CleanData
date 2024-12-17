@@ -1,20 +1,23 @@
 import random
 
-L1 = "Chorizopyttipannu"
-F1 = "Uunilohi"
-L2 = "Lasagne"
-K1 = "Broilerikiusaus"
-L3 = "Makaronilaatikko"
-K2 = "Kermainen broileripata"
-L4 = "Perunasosepelti"
-L5 = "Spagetti"
-F2 = "Tonnikalasalaatti"
-F3 = "Tonnikalanuudelit"
-V1 = "Fetasalaatti"
-V2 = "Fetanuudelit"
-L6 = "Uunimakkara"
-L7 = "Pizza"
-K3 = "Paistettu koipi + lisuke"
+# Ruokatyypit: Liha = 1, Kana = 2, Kala = 3, Vege = 4
+ruokaData = [
+    {"nimi":"Chorizopyttipannu", "tyyppi": 1, "terveys": False, "helppo": False},
+    {"nimi":"Uunilohi", "tyyppi": 3, "terveys": True, "helppo": True},
+    {"nimi":"Lasagne", "tyyppi": 1, "terveys": True, "helppo": False},
+    {"nimi":"Broilerikiusaus", "tyyppi": 2, "terveys": True, "helppo": True},
+    {"nimi":"Makaronilaatikko", "tyyppi": 1, "terveys": True, "helppo": True},
+    {"nimi":"Kermainen broileripata", "tyyppi": 2, "terveys": True, "helppo": False},
+    {"nimi":"Perunasosepelti", "tyyppi": 1, "terveys": True, "helppo": True},
+    {"nimi":"Spagetti", "tyyppi": 1, "terveys": True, "helppo": True},
+    {"nimi":"Tonnikalasalaatti", "tyyppi": 3, "terveys": True, "helppo": True},
+    {"nimi":"Tonnikalanuudelit", "tyyppi": 3, "terveys": False, "helppo": True},
+    {"nimi":"Fetasalaatti", "tyyppi": 4, "terveys": True, "helppo": True},
+    {"nimi":"Fetanuudelit", "tyyppi": 4, "terveys": False, "helppo": True},
+    {"nimi":"Uunimakkara", "tyyppi": 1, "terveys": False, "helppo": True},
+    {"nimi":"Pizza", "tyyppi": 1, "terveys": False, "helppo": False},
+    {"nimi":"Paistettu koipi + lisuke", "tyyppi": 2, "terveys": True, "helppo": True}
+]
 
 ruokalista = {"Chorizopyttipannu",
 "Uunilohi",
@@ -32,307 +35,6 @@ ruokalista = {"Chorizopyttipannu",
 "Pizza",
 "Paistettu koipi + lisuke"}
 
-def suositus(ruoka, terveys, helppous):
-    if ruoka == "k" and terveys and helppous:
-        R = random.randint(1, 6)
-        if R == 1:
-            return F1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return F2
-        else:
-            return V1
-    if ruoka == "k" and not terveys and not helppous:
-        R = random.randint(1, 12)
-        if R == 1:
-            return F1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return F2
-        if R == 6:
-            return L2
-        if R == 7:
-            return F3
-        if R == 8:
-            return L6
-        if R == 9:
-            return L7
-        if R == 10:
-            return V2
-        if R == 11:
-            return L1
-        else:
-            return V1
-    if ruoka == "k" and terveys and not helppous:
-        R = random.randint(1, 7)
-        if R == 1:
-            return F1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return F2
-        if R == 6:
-            return L2
-        else:
-            return V1
-    if ruoka == "k" and not terveys and helppous:
-        R = random.randint(1, 9)
-        if R == 1:
-            return F1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return F2
-        if R == 6:
-            return F3
-        if R == 7:
-            return L6
-        if R == 8:
-            return V2
-        else:
-            return V1
-
-    if ruoka == "f" and terveys and helppous:
-        R = random.randint(1, 6)
-        if R == 1:
-            return K1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return K3
-        else:
-            return V1
-    if ruoka == "f" and not terveys and not helppous:
-        R = random.randint(1, 12)
-        if R == 1:
-            return K1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return K2
-        if R == 6:
-            return L2
-        if R == 7:
-            return K3
-        if R == 8:
-            return L6
-        if R == 9:
-            return L7
-        if R == 10:
-            return V2
-        if R == 11:
-            return L1
-        else:
-            return V1
-    if ruoka == "f" and terveys and not helppous:
-        R = random.randint(1, 8)
-        if R == 1:
-            return K1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return K3
-        if R == 6:
-            return L2
-        if R == 7:
-            return K2
-        else:
-            return V1
-    if ruoka == "f" and not terveys and helppous:
-        R = random.randint(1, 8)
-        if R == 1:
-            return K1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return K3
-        if R == 6:
-            return L6
-        if R == 7:
-            return V2
-        else:
-            return V1
-
-    if ruoka == "l" and terveys and helppous:
-        R = random.randint(1, 5)
-        if R == 1:
-            return K1
-        if R == 2:
-            return F1
-        if R == 3:
-            return F2
-        if R == 4:
-            return K3
-        else:
-            return V1
-    if ruoka == "l" and not terveys and not helppous:
-        R = random.randint(1, 8)
-        if R == 1:
-            return F1
-        if R == 2:
-            return F2
-        if R == 3:
-            return F3
-        if R == 4:
-            return K1
-        if R == 5:
-            return K2
-        if R == 6:
-            return K3
-        if R == 7:
-            return V2
-        else:
-            return V1
-    if ruoka == "l" and terveys and not helppous:
-        R = random.randint(1, 6)
-        if R == 1:
-            return F1
-        if R == 2:
-            return K1
-        if R == 3:
-            return K2
-        if R == 4:
-            return F2
-        if R == 5:
-            return K3
-        else:
-            return V1
-    if ruoka == "l" and not terveys and helppous:
-        R = random.randint(1, 7)
-        if R == 1:
-            return F1
-        if R == 2:
-            return K1
-        if R == 3:
-            return F2
-        if R == 4:
-            return K3
-        if R == 5:
-            return V1
-        if R == 6:
-            return F3
-        else:
-            return V2
-
-    if ruoka == "v" and terveys and helppous:
-        R = random.randint(1, 7)
-        if R == 1:
-            return K1
-        if R == 2:
-            return F1
-        if R == 3:
-            return L3
-        if R == 4:
-            return L4
-        if R == 5:
-            return L5
-        if R == 6:
-            return F2
-        else:
-            return K3
-    if ruoka == "v" and not terveys and not helppous:
-        R = random.randint(1, 13)
-        if R == 1:
-            return F1
-        if R == 2:
-            return L3
-        if R == 3:
-            return L4
-        if R == 4:
-            return L5
-        if R == 5:
-            return F2
-        if R == 6:
-            return L2
-        if R == 7:
-            return F3
-        if R == 8:
-            return L6
-        if R == 9:
-            return L7
-        if R == 10:
-            return K1
-        if R == 11:
-            return L1
-        if R == 12:
-            return K2
-        else:
-            return K3
-    if ruoka == "v" and terveys and not helppous:
-        R = random.randint(1, 9)
-        if R == 1:
-            return K1
-        if R == 2:
-            return F1
-        if R == 3:
-            return L3
-        if R == 4:
-            return L4
-        if R == 5:
-            return L5
-        if R == 6:
-            return F2
-        if R == 7:
-            return L2
-        if R == 8:
-            return K2
-        else:
-            return K3
-    if ruoka == "v" and not terveys and helppous:
-        R = random.randint(1, 9)
-        if R == 1:
-            return F3
-        if R == 2:
-            return L6
-        if R == 3:
-            return F2
-        if R == 4:
-            return K3
-        if R == 5:
-            return L4
-        if R == 6:
-            return L5
-        if R == 7:
-            return K1
-        if R == 8:
-            return F1
-        else:
-            return L3
-
 while True:
 
     print("Mitä söit eilen, tarvitseeko tämän päivän ruuan olla terveellistä (1/0) ja tarvitseeko sen olla helppoa (1)")
@@ -344,40 +46,59 @@ while True:
     valinta = input("Syötteesi: ")
 
     if valinta == "k":
-        print("Tälle päivälle suosittelen: " + str(suositus("k", False, False)))
+        kaikki_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["tyyppi"] != 2]
+        print("Tälle päivälle suosittelen: " + str(random.choice(kaikki_ruuat)))
     elif valinta == "k1" or valinta == "k10":
-        print("Tälle päivälle suosittelen: " + str(suositus("k", True, False)))
+        terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["helppo"] and ruoka["tyyppi"] != 2]
+        print("Tälle päivälle suosittelen: " + str(random.choice(terveelliset_ruuat)))
     elif valinta == "k11":
-        print("Tälle päivälle suosittelen: " + str(suositus("k", True, True)))
+        helpot_ja_terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["helppo"] and ruoka["terveys"] and ruoka["tyyppi"] != 2]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ja_terveelliset_ruuat)))
     elif valinta == "k01":
-        print("Tälle päivälle suosittelen: " + str(suositus("k", False, True)))
+        helpot_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["terveys"] and ruoka["tyyppi"] != 2]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ruuat)))
 
     elif valinta == "f":
-        print("Tälle päivälle suosittelen: " + str(suositus("f", False, False)))
+        kaikki_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["tyyppi"] != 3]
+        print("Tälle päivälle suosittelen: " + str(random.choice(kaikki_ruuat)))
     elif valinta == "f1" or valinta == "f10":
-        print("Tälle päivälle suosittelen: " + str(suositus("f", True, False)))
+        terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["helppo"] and ruoka["tyyppi"] != 3]
+        print("Tälle päivälle suosittelen: " + str(random.choice(terveelliset_ruuat)))
     elif valinta == "f11":
-        print("Tälle päivälle suosittelen: " + str(suositus("f", True, True)))
+        helpot_ja_terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if
+                                        ruoka["helppo"] and ruoka["terveys"] and ruoka["tyyppi"] != 3]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ja_terveelliset_ruuat)))
     elif valinta == "f01":
-        print("Tälle päivälle suosittelen: " + str(suositus("f", False, True)))
+        helpot_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["terveys"] and ruoka["tyyppi"] != 3]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ruuat)))
 
     elif valinta == "l":
-        print("Tälle päivälle suosittelen: " + str(suositus("l", False, False)))
+        kaikki_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["tyyppi"] != 1]
+        print("Tälle päivälle suosittelen: " + str(random.choice(kaikki_ruuat)))
     elif valinta == "l1" or valinta == "l10":
-        print("Tälle päivälle suosittelen: " + str(suositus("l", True, False)))
+        terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["helppo"] and ruoka["tyyppi"] != 1]
+        print("Tälle päivälle suosittelen: " + str(random.choice(terveelliset_ruuat)))
     elif valinta == "l11":
-        print("Tälle päivälle suosittelen: " + str(suositus("l", True, True)))
+        helpot_ja_terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if
+                                        ruoka["helppo"] and ruoka["terveys"] and ruoka["tyyppi"] != 1]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ja_terveelliset_ruuat)))
     elif valinta == "l01":
-        print("Tälle päivälle suosittelen: " + str(suositus("l", False, True)))
+        helpot_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["terveys"] and ruoka["tyyppi"] != 1]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ruuat)))
 
     elif valinta == "v":
-        print("Tälle päivälle suosittelen: " + str(suositus("v", False, False)))
+        kaikki_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["tyyppi"] != 4]
+        print("Tälle päivälle suosittelen: " + str(random.choice(kaikki_ruuat)))
     elif valinta == "v1" or valinta == "v10":
-        print("Tälle päivälle suosittelen: " + str(suositus("v", True, False)))
+        terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["helppo"] and ruoka["tyyppi"] != 4]
+        print("Tälle päivälle suosittelen: " + str(random.choice(terveelliset_ruuat)))
     elif valinta == "v11":
-        print("Tälle päivälle suosittelen: " + str(suositus("k", True, True)))
+        helpot_ja_terveelliset_ruuat = [ruoka['nimi'] for ruoka in ruokaData if
+                                        ruoka["helppo"] and ruoka["terveys"] and ruoka["tyyppi"] != 4]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ja_terveelliset_ruuat)))
     elif valinta == "v01":
-        print("Tälle päivälle suosittelen: " + str(suositus("v", False, True)))
+        helpot_ruuat = [ruoka['nimi'] for ruoka in ruokaData if ruoka["terveys"] and ruoka["tyyppi"] != 4]
+        print("Tälle päivälle suosittelen: " + str(random.choice(helpot_ruuat)))
 
     elif valinta == "vk":
         viikonruokalista = random.sample(ruokalista, 7)
