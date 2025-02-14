@@ -9,7 +9,7 @@ import pandas as pd
 import csv
 
 # Console output at startup
-print("PassContainer v. 1.0\n2025 © Data Animal")
+print("PassContainer v. 1.1\n2025 © Data Animal")
 
 # Global variables
 global column_labels, data_labels, pddata, col_names, filepath
@@ -212,6 +212,27 @@ def describe_column():
                 column_name = col_names[selection_index]
                 console.insert('end', pddata[column_name].describe())
                 console.insert('end', "\n")
+            except KeyError:
+                console.insert('end', "Column not found.\n")
+        else:
+            messagebox.showwarning("Warning", "No column selected.")
+    else:
+        messagebox.showinfo("Error", "Please load a CSV file first.")
+
+# Print all non-numeric data on console
+def check_nonnumerics():
+    if 'pddata' in globals():
+        selection_index = datacolumns.current()
+        if selection_index != -1:
+            try:
+                column_name = col_names[selection_index]
+                column = pddata[column_name]
+                non_numerics = pddata[pd.to_numeric(column, errors='coerce').isna()]
+                if not non_numerics.empty:
+                    console.insert('end', non_numerics.to_string())
+                    console.insert('end', "\n")
+                else:
+                    messagebox.showinfo("", f"All values numeric on column {column_name}")
             except KeyError:
                 console.insert('end', "Column not found.\n")
         else:
@@ -560,6 +581,7 @@ nantomean = tk.Button(text="Replace NaN values with column mean", command=nansto
 toChange = tk.Entry()
 updateRowbtn = tk.Button(text="Update row", command=update_row)
 removeRowbtn = tk.Button(text="Delete row", command=remove_row)
+nonnumbtn = tk.Button(text="Check for non-numerics", command=check_nonnumerics)
 
 # Widget placements
 changeLabel.place(x=680, y=370)
@@ -567,6 +589,7 @@ toBeChanged.place(x=755, y=370)
 toLabel1.place(x=785, y=370)
 toChange.place(x=810, y=370)
 updateRowbtn.place(x=945, y=365)
+nonnumbtn.place(x=945, y=410)
 removeRowbtn.place(x=1025, y=365)
 describebtn.place(x=680, y=450)
 alldatabtn.place(x=770, y=450)
